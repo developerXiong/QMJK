@@ -400,10 +400,10 @@
             </objects>
             <point key="canvasLocation" x="1815" y="-116"/>
         </scene>
-        <!--test-->
+        <!--Personnel list-->
         <scene sceneID="VrU-ht-VZJ">
             <objects>
-                <tableViewController title="test" id="0s6-kS-I8W" customClass="CYPersonnelListViewController" customModule="QmjkInternational" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Personnel list" id="0s6-kS-I8W" customClass="CYPersonnelListViewController" customModule="QmjkInternational" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="113" sectionHeaderHeight="1" sectionFooterHeight="12" id="RdC-GS-YJu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -413,7 +413,7 @@
                             <outlet property="delegate" destination="0s6-kS-I8W" id="Qvu-P8-D0j"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Personnel list" id="W1c-xc-uqd">
+                    <navigationItem key="navigationItem" id="W1c-xc-uqd">
                         <barButtonItem key="leftBarButtonItem" image="图层-87" id="65d-el-nHs">
                             <connections>
                                 <action selector="loginout:" destination="0s6-kS-I8W" id="EcZ-gP-d4I"/>
@@ -1389,7 +1389,7 @@
         <image name="矢量智能对象" width="129" height="113"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Or7-xi-Npv"/>
-        <segue reference="LlI-Re-WNv"/>
+        <segue reference="YxB-as-sHR"/>
+        <segue reference="fEx-kk-eap"/>
     </inferredMetricsTieBreakers>
 </document>
