@@ -13,10 +13,10 @@ class CYAddInfoFifthViewController: UIViewController, UIPickerViewDataSource, UI
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
     
-    var user = CYSubUserInfo()
+    var user = CYUser()
     var isEditInfo = false    // 是否为编辑资料
-    var sid: Int64?
-    
+    var userId: String?
+
     var weights: [String]?
     var weight: String?
     
@@ -68,7 +68,7 @@ class CYAddInfoFifthViewController: UIViewController, UIPickerViewDataSource, UI
             let vc = segue.destination as! CYAddInfoSixthViewController
             vc.user = user
             vc.isEditInfo = isEditInfo
-            vc.sid = sid
+            vc.userId = userId
         }
     }
     

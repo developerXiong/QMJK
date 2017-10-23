@@ -11,10 +11,9 @@ import UIKit
 class CYAddInfoFirstViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nicknameTF: UITextField!
     
-    var user = CYSubUserInfo()
-    var user_id: Int64?
+    var user = CYUser()
     var isEditInfo = false    // 是否为编辑资料
-    var sid: Int64?
+    var userId: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +28,7 @@ class CYAddInfoFirstViewController: UIViewController, UITextFieldDelegate {
             CYAlertView.showText("Nick name cannot be empty", on: view, duration: 1.5, position: .center)
             return
         }
-        user.name = nickname
-        user.user_id = user_id
+        user.userName = nickname
         self.performSegue(withIdentifier: "addSegue2", sender: self)
     }
     
@@ -49,7 +47,7 @@ class CYAddInfoFirstViewController: UIViewController, UITextFieldDelegate {
             let vc = segue.destination as! CYAddInfoSecondViewController
             vc.user = user
             vc.isEditInfo = isEditInfo
-            vc.sid = sid
+            vc.userId = userId
         }
     }
     

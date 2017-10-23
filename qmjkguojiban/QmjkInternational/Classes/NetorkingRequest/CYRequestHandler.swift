@@ -10,7 +10,7 @@ import UIKit
 
 class CYRequestHandler: NSObject {
 
-    typealias RequestSuccessBlock = (Bool, NSDictionary?) -> ()
+    typealias RequestSuccessBlock = (Bool, [String : Any]?) -> ()
     typealias RequestFailureBlock = (String) -> ()
     
     /// 注册
@@ -31,7 +31,7 @@ class CYRequestHandler: NSObject {
     
     /// 登录
     /// 返回：
-    /// {"status":200,"isLogin":true,"userManager":1}
+    /// {"status":200,"isLogin":true,"managerId":1}
     static func login(_ account: String, password: String, success: RequestSuccessBlock?, failure: RequestFailureBlock?) {
         let params = ["userAccount" : account, "password" : password]
         let url = "login"
@@ -93,8 +93,8 @@ class CYRequestHandler: NSObject {
     }
     
     /// 添加新用户
-    static func addUser(userName: String,sex: Int,birth: String,height: Int, weight: Int, infoLow:Int, InfoHigh: Int, success: RequestSuccessBlock?, failure: RequestFailureBlock?) {
-        let params = ["managerId": USERID, "userName": userName, "sex": sex, "birth": birth, "height": height, "weight": weight, "infoLow": infoLow, "infoHigh": InfoHigh] as [String : Any]
+    static func addUser(userName: String,sex: String,birth: String,height: Int, weight: Int, infoLow:Int, InfoHigh: Int, success: RequestSuccessBlock?, failure: RequestFailureBlock?) {
+        let params = ["managerId": MANAGER_ID, "userName": userName, "sex": sex, "birth": birth, "height": height, "weight": weight, "infoLow": infoLow, "infoHigh": InfoHigh] as [String : Any]
         let url = "addUserinfo"
         CYNetworkingRequest.post(url, params, { (data) in
             if success != nil {
@@ -119,7 +119,7 @@ class CYRequestHandler: NSObject {
 //    Weight:int
 //    info_low:int
 //    info_high:int
-    static func modifyUser(_ userId: String, userName: String,sex: Int,birth: String,height: Int, weight: Int, infoLow:Int, InfoHigh: Int, success: RequestSuccessBlock?, failure: RequestFailureBlock?) {
+    static func modifyUser(_ userId: String, userName: String,sex: String,birth: String,height: Int, weight: Int, infoLow:Int, InfoHigh: Int, success: RequestSuccessBlock?, failure: RequestFailureBlock?) {
         let params = ["userId":userId, "userName": userName, "sex": sex, "birth": birth, "height": height, "weight": weight, "info_low": infoLow, "info_high": InfoHigh] as [String : Any]
         let url = "updateUserInfo"
         CYNetworkingRequest.post(url, params, { (data) in
@@ -162,8 +162,8 @@ class CYRequestHandler: NSObject {
 //
 //    返回：//TODO
     static func getAllUser(_ success: RequestSuccessBlock?, failure: RequestFailureBlock?) {
-        let params = ["managerId" : USERID]
-        let url = "getUserByUserId"
+        let params = ["managerId" : MANAGER_ID]
+        let url = "getUserByManagerId"
         CYNetworkingRequest.post(url, params, { (data) in
             if success != nil {
                 let isSuccess = true

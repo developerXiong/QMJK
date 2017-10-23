@@ -18,8 +18,8 @@ class CYTestViewController: UIViewController, QmjkLogDelegate, QmjkDataSource {
     var cireView: CYCycleProgressView!
     let imageWidth = screenW - 160
     
-    var sid: Int64?
-    var subUser: CYSubUserInfo?
+    var userId: String?
+    var subUser: CYUser?
     
     var rate: Int!
     var oxygen: Int!
@@ -214,12 +214,12 @@ class CYTestViewController: UIViewController, QmjkLogDelegate, QmjkDataSource {
     private func modifyUserInfo() {
         var params = [String: Any]()
         params["userId"] = QmjkRegisterHttpHandler.getUserId()
-        params["sex"] = (subUser?.sex!)! ? "1" : "2"
+        params["sex"] = subUser?.sex!
         params["birth"] = subUser?.birth!
         params["height"] = subUser?.height!
         params["weight"] = subUser?.weight!
-        params["infoLow"] = subUser?.lowBP!
-        params["infoHigh"] = subUser?.highBP!
+        params["infoLow"] = subUser?.infoLow!
+        params["infoHigh"] = subUser?.infoHigh!
         params["infoBPSituation"] = "2"
         QmjkRegisterHttpHandler.updateUserInfo(params, success: { (response) in
             let data = response as! [String : Any]
@@ -239,15 +239,17 @@ class CYTestViewController: UIViewController, QmjkLogDelegate, QmjkDataSource {
     
     /// 上传体检记录
     private func reloadDataToDatabase() {
-        let history = CYHistory()
-        history.rate = self.rate
-        history.breath = self.breath
-        history.high = self.highBP
-        history.low = self.lowBP
-        history.PI = self.PI
-        history.oxygen = self.oxygen
-        history.sid_id = sid
-        history.createTime = Date()
+        var history = CYHistory()
+        history.monitorRate = self.rate
+        history.monitorBreath = self.breath
+        history.monitorHigh = self.highBP
+        history.monitorLow = self.lowBP
+        history.monitorPI = self.PI
+        history.monitorOxygen = self.oxygen
+        history.userId = userId
+        let dfm = DateFormatter()
+        dfm.dateFormat = "dd/MM/yyyy HH:mm"
+        history.createTime = dfm.string(from: Date())
 
         CYUploadTestDataHandler.uploadTest(history) { (isSuccess, errMsg) in
             if isSuccess {
@@ -382,7 +384,7 @@ class CYTestViewController: UIViewController, QmjkLogDelegate, QmjkDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "testToHistory" {
             let vc = segue.destination as! CYHistoryListViewController
-            vc.sid = sid
+            vc.userId = userId
         }
     }
     

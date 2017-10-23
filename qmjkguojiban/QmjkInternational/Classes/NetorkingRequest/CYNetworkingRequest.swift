@@ -13,21 +13,22 @@ class CYNetworkingRequest: NSObject {
 
     static let url = "http://192.168.0.150:8085/qmjk-internation/"
     
-    typealias RequestSuccessBlock = (NSDictionary?) -> ()
+    typealias RequestSuccessBlock = ([String : Any]?) -> ()
     typealias RequestFailureBlock = (String) -> ()
     
     /// post请求
     static func post(_ url: String, _ paramters: [String: Any]?, _ success: RequestSuccessBlock?, _ failure: RequestFailureBlock?) {
         let requestURL = self.url + url + ".do"
-        Alamofire.request(requestURL, method: .post, parameters: paramters).responseString { response in
-            debugPrint("Response String: \(response.result.value ?? "asd")")
+        Alamofire.request(requestURL, method: .post, parameters: paramters, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             if response.result.isSuccess {
                 if (success != nil) {
-                    let result = getDictionaryFromJSONString(jsonString: response.result.value)
+                    debugPrint(response.result.value ?? "请求\(requestURL)没有数据返回")
+                    let result = response.result.value as? [String : Any]
                     success!(result)
                 }
             } else {
                 if failure != nil {
+                    debugPrint(response.result.error ?? "error nil")
                     let error = "Request" + "\(requestURL)" + " failed. Your parameters like this: " + "\(String(describing: paramters))"
                     failure!(error)
                 }
@@ -38,11 +39,12 @@ class CYNetworkingRequest: NSObject {
     /// get请求
     static func get(_ url: String, _ paramters: [String: Any]?, _ success: RequestSuccessBlock?, _ failure: RequestFailureBlock?) {
         let requestURL = self.url + url + ".do"
-        Alamofire.request(requestURL, method: .get, parameters: paramters).responseString { response in
+        Alamofire.request(requestURL, method: .get, parameters: paramters).responseJSON { response in
             debugPrint("Response String: \(response.result.value ?? "asd")")
             if response.result.isSuccess {
                 if (success != nil) {
-                    let result = getDictionaryFromJSONString(jsonString: response.result.value)
+                    debugPrint(response.result.value ?? "请求\(requestURL)没有数据返回")
+                    let result = response.result.value as? [String : Any]
                     success!(result)
                 }
             } else {

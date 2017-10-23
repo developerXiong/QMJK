@@ -13,10 +13,10 @@ class CYAddInfoFourthViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
     
-    var user = CYSubUserInfo()
+    var user = CYUser()
     var isEditInfo = false    // 是否为编辑资料
-    var sid: Int64?
-    
+    var userId: String?
+
     var heights: [String]?
     var height: String?
     
@@ -73,7 +73,7 @@ class CYAddInfoFourthViewController: UIViewController, UIPickerViewDelegate, UIP
             let vc = segue.destination as! CYAddInfoFifthViewController
             vc.user = user
             vc.isEditInfo = isEditInfo
-            vc.sid = sid
+            vc.userId = userId
         }
     }
     

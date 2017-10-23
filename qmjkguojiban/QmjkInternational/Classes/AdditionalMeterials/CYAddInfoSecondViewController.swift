@@ -16,10 +16,10 @@ class CYAddInfoSecondViewController: UIViewController {
     @IBOutlet weak var maleLabel: UILabel!
     @IBOutlet weak var femaleLabel: UILabel!
     
-    var user = CYSubUserInfo()
+    var user = CYUser()
     var isEditInfo = false    // 是否为编辑资料
-    var sid: Int64?
-    
+    var userId: String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,7 +45,7 @@ class CYAddInfoSecondViewController: UIViewController {
 
     /// 下一步
     @IBAction func next(_ sender: Any) {
-        user.sex = maleBtn.isSelected
+        user.sex = maleBtn.isSelected ? "1" : "2"
         self.performSegue(withIdentifier: "addSegue3", sender: self)
     }
     
@@ -55,7 +55,7 @@ class CYAddInfoSecondViewController: UIViewController {
             let vc = segue.destination as! CYAddInfoThirdViewController
             vc.user = user
             vc.isEditInfo = isEditInfo
-            vc.sid = sid
+            vc.userId = userId
         }
     }
     

@@ -49,8 +49,6 @@ class CYRegisterViewController: UIViewController,UITextFieldDelegate {
                 CYLoginRegistHandler.registServer(email, password, is_success: { (isServerSuccess, errMsg) in
                     if isServerSuccess {
                         CYAlertView.showText("Regist success", on: self.view, duration: 1.5, position: .center, style: nil)
-                        /// 本地注册
-                        CYLoginRegistHandler.registLocation(email, password, isSuccess: nil)
                     } else {
                         CYAlertView.showText("Regist failure," + errMsg, on: self.view, duration: 1.5, position: .center, style: nil)
                     }

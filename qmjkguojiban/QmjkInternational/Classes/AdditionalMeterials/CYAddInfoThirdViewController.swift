@@ -13,10 +13,10 @@ class CYAddInfoThirdViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    var user = CYSubUserInfo()
+    var user = CYUser()
     var isEditInfo = false    // 是否为编辑资料
-    var sid: Int64?
-    
+    var userId: String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,7 +49,7 @@ class CYAddInfoThirdViewController: UIViewController {
             let vc = segue.destination as! CYAddInfoFourthViewController
             vc.user = user
             vc.isEditInfo = isEditInfo
-            vc.sid = sid
+            vc.userId = userId
         }
     }
     

@@ -12,7 +12,7 @@ class CYPersonnelListViewController: UITableViewController {
     
     typealias ReloadDataBlock = () -> ()
 
-    var datas: [CYSubUserInfo]?
+    var datas: [CYUser]?
     
     var section: Int!
     
@@ -28,7 +28,9 @@ class CYPersonnelListViewController: UITableViewController {
     
     /// 获取数据
     func getData() {
-        CYPersonnelDataHandler.getSubUsers { (users) in
+        datas = [CYUser]()
+        CYPersonnelDataHandler.getSubUsers { (users, errMsg) in
+            guard let users = users else { return }
             self.datas = users
             self.tableView.reloadData()
         }
@@ -50,7 +52,7 @@ class CYPersonnelListViewController: UITableViewController {
     /// 退出登录
     @IBAction func loginout(_ sender: UIBarButtonItem) {
         CYAlertView.showSystemAlert(on: self, title: "tips", message: "Logout?", sureHandler: { (_) in
-            store(nil, key: kUserId)
+            store(nil, key: kManagerId)
             self.performSegue(withIdentifier: "backToLogin", sender: self)
         }, cancelHandler: nil)
     }
@@ -116,21 +118,20 @@ class CYPersonnelListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addSegue1" {
             let vc = segue.destination as! CYAddInfoFirstViewController
-            vc.user_id = Int64(USERID)!
             vc.isEditInfo = false
         }
         if segue.identifier == "toDetailSegue" {
             let vc = segue.destination as! CYPersonnelListEditingViewController
             vc.datas = self.datas
-            vc.sid = self.datas![section].sid
+            vc.userId = self.datas![section].userId
         }
         if segue.identifier == "historySegue" {
             let vc = segue.destination as! CYHistoryListViewController
-            vc.sid = self.datas![section].sid
+            vc.userId = self.datas![section].userId
         }
         if segue.identifier == "toTestSegue" {
             let vc = segue.destination as! CYTestViewController
-            vc.sid = self.datas![section].sid
+            vc.userId = self.datas![section].userId
             vc.subUser = self.datas![section]
         }
     }

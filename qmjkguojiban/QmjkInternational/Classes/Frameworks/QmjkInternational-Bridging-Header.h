@@ -3,8 +3,6 @@
 //
 
 
-#import "FMDB/FMDB.h"
-#import "MJExtension/MJExtension.h"
 #import "HealthmeCloudSDK_iOS/QmjkDeviceManager.h"
 #import "HealthmeCloudSDK_iOS/QmjkRegisterHttpHandler.h"
 #import "HeartRateWaveView.h"

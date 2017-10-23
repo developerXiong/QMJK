@@ -27,12 +27,12 @@ class CYHistoryListCell: UITableViewCell {
 
     
     func setCell(with history: CYHistory) {
-        dateLabel.text = history.creatTimeStr
-        BPLabel.text = "\(history.high!)/\(history.low!)"
-        SPO2HLabel.text = "\(history.oxygen!)"
-        HRLabel.text = "\(history.rate!)"
-        RRLabel.text = "\(history.breath!)"
-        PILabel.text = "\(history.PI!)"
+        dateLabel.text = history.createTime
+        BPLabel.text = "\(history.monitorHigh!)/\(history.monitorLow!)"
+        SPO2HLabel.text = "\(history.monitorOxygen!)"
+        HRLabel.text = "\(history.monitorRate!)"
+        RRLabel.text = "\(history.monitorBreath!)"
+        PILabel.text = "\(history.monitorPI!)"
         if row == 0 {
             isNewBtn.isHidden = false
         } else {

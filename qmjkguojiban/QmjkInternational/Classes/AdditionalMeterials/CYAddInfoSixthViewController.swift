@@ -15,10 +15,10 @@ class CYAddInfoSixthViewController: UIViewController {
     @IBOutlet weak var lowBtn: UIButton!
     @IBOutlet weak var lowView: UIView!
     
-    var user = CYSubUserInfo()
+    var user = CYUser()
     var isEditInfo = false    // 是否为编辑资料
-    var sid: Int64?
-    
+    var userId: String?
+
     let highValues = ["100~109 mmHg", "110~119 mmHg", "120~129 mmHg", "130~139 mmHg", "140~149 mmHg", "150~159 mmHg"]
     let highBPs = ["105", "115", "125", "135", "145", "155"]
     let lowValues = ["50~59 mmHg", "60~69 mmHg", "70~79 mmHg", "80~89 mmHg", "90~99 mmHg", "100~109"]
@@ -99,16 +99,18 @@ class CYAddInfoSixthViewController: UIViewController {
     /// 添加子用户
     @IBAction func finishingAction(_ sender: Any) {
         
-        user.lowBP = lowBPs[lowIndex]
-        user.highBP = highBPs[highIndex]
-        user.creatTime = Date()
+        user.infoLow = lowBPs[lowIndex]
+        user.infoHigh = highBPs[highIndex]
+        let dfm = DateFormatter()
+        dfm.dateFormat = "dd/MM/yyyy HH:mm"
+        user.createTime = dfm.string(from: Date())
         
         if isEditInfo {
             /// 更新用户
-            if sid == nil {
+            if userId == nil {
                 CYAlertView.showText("Update sub user failed", on: view, duration: 1.5, position: .center)
             }
-            user.sid = sid!
+            user.userId = userId!
             
             CYAddUpdateSubserHandler.updateUser(user, isSuccess: { (isSuccess, errMsg) in
                 if isSuccess {

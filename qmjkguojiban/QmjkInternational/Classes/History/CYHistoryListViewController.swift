@@ -10,7 +10,7 @@ import UIKit
 
 class CYHistoryListViewController: UITableViewController {
 
-    var sid: Int64?
+    var userId: String?
     var datas: [CYHistory]?
     var row: Int!
     
@@ -48,7 +48,7 @@ class CYHistoryListViewController: UITableViewController {
     
     private func getData() {
         
-        CYHistoryHandler.getHistory(sid!) { (historys) in
+        CYHistoryHandler.getHistory(userId!) { (historys, errMsg) in
             self.datas = historys
             self.tableView.reloadData()
         }
@@ -80,7 +80,7 @@ class CYHistoryListViewController: UITableViewController {
         if segue.identifier == "historyDetailSegue" {
             let vc = segue.destination as! CYHistoryViewController
             vc.history = self.datas?[row]
-            vc.sid = sid
+            vc.userId = userId
         }
     }
 

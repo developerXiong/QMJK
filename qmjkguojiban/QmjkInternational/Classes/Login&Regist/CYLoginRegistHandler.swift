@@ -13,15 +13,16 @@ class CYLoginRegistHandler: NSObject {
     // MARK: Login
     
     /// 服务器登录
-    static func loginServer(_ email: String, _ password: String, is_success: ((Bool, CYUserInfo?, String)->())?) {
+    static func loginServer(_ email: String, _ password: String, is_success: ((Bool, CYManager?, String)->())?) {
         CYRequestHandler.login(email, password: password, success: { (isSuccess, data) in
             if isSuccess {
                 /// 登录成功
                 guard let data = data else { return }
-                var user = CYUserInfo()
+                var user = CYManager()
+                let userId = data["managerId"]! as! String
                 user.email = email
                 user.password = password
-                user.id = data["userManager"] as? Int64
+                user.managerId = userId
                 debugPrint("Login success")
                 
                 if is_success != nil {
@@ -43,20 +44,20 @@ class CYLoginRegistHandler: NSObject {
     }
     
     /// 本地登录
-    static func loginLocation(_ email: String, _ password: String, isSuccess: ((Bool, CYUserInfo?)->())?) {
-        let db = CYDatabaseManager.shared
-        let user = db.readAData(_email: email, _password: password)
-        
-        if user != nil {
-            if isSuccess != nil {
-                isSuccess!(true, user!)
-            }
-        } else {
-            if isSuccess != nil {
-                isSuccess!(false, nil)
-            }
-        }
-    }
+//    static func loginLocation(_ email: String, _ password: String, isSuccess: ((Bool, CYUserInfo?)->())?) {
+//        let db = CYDatabaseManager.shared
+//        let user = db.readAData(_email: email, _password: password)
+//
+//        if user != nil {
+//            if isSuccess != nil {
+//                isSuccess!(true, user!)
+//            }
+//        } else {
+//            if isSuccess != nil {
+//                isSuccess!(false, nil)
+//            }
+//        }
+//    }
     
     /// 登录全民健康
     static func loginQmjk(_ account: String, isSuccess: ((Bool, String)->())?) {
@@ -97,13 +98,13 @@ class CYLoginRegistHandler: NSObject {
     }
     
     /// 走本地注册
-    static func registLocation(_ email: String, _ password: String, isSuccess:((Bool, String)->())?) {
-        let db = CYDatabaseManager.shared
-        let is_success = db.insertData(_password: password, _email: email, _isUpload: true)
-        if isSuccess != nil {
-            isSuccess!(is_success, is_success ? "" : "插入数据库失败")
-        }
-    }
+//    static func registLocation(_ email: String, _ password: String, isSuccess:((Bool, String)->())?) {
+//        let db = CYDatabaseManager.shared
+//        let is_success = db.insertData(_password: password, _email: email, _isUpload: true)
+//        if isSuccess != nil {
+//            isSuccess!(is_success, is_success ? "" : "插入数据库失败")
+//        }
+//    }
     
     /// 注册全民健康sdk账号
     static func registQmjk(_ account: String, isSuccess:((Bool, String)->())?) {

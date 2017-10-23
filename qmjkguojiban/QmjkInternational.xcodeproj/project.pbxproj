@@ -33,10 +33,6 @@
 		4F9A07911F735D65008ECCD2 /* CYDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A07901F735D65008ECCD2 /* CYDatabaseManager.swift */; };
 		4F9A07921F7364C1008ECCD2 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9A078D1F735CD3008ECCD2 /* SQLite.framework */; };
 		4F9A07931F7364C1008ECCD2 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9A078D1F735CD3008ECCD2 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4F9A07961F736977008ECCD2 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9A07951F736977008ECCD2 /* FMDB.framework */; };
-		4F9A07981F73697E008ECCD2 /* FMDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9A07951F736977008ECCD2 /* FMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4F9A079E1F7387F2008ECCD2 /* MJExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9A079D1F7387F2008ECCD2 /* MJExtension.framework */; };
-		4F9A07A01F7387FD008ECCD2 /* MJExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9A079D1F7387F2008ECCD2 /* MJExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F9A07A51F73883E008ECCD2 /* CYModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A07A41F73883E008ECCD2 /* CYModels.swift */; };
 		4F9A42FD1F78A2E400112583 /* CYUserdefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A42FC1F78A2E400112583 /* CYUserdefaultKeys.swift */; };
 		4F9BFC511F720FCC00BCCCCB /* CYTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9BFC501F720FCC00BCCCCB /* CYTestViewController.swift */; };
@@ -57,6 +53,9 @@
 		4FA638E61F711AB000838704 /* CYHistoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA638E51F711AB000838704 /* CYHistoryHeaderView.xib */; };
 		4FA638E81F7122FC00838704 /* CYHistoryFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA638E71F7122FC00838704 /* CYHistoryFooterView.swift */; };
 		4FA638EA1F71230C00838704 /* CYHistoryFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA638E91F71230C00838704 /* CYHistoryFooterView.xib */; };
+		4FA794131F9DE18C006925BA /* HandyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA794121F9DE183006925BA /* HandyJSON.framework */; };
+		4FA794141F9DE18C006925BA /* HandyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA794121F9DE183006925BA /* HandyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4FA88CA11F9DCD920028E7CF /* CYServerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA88CA01F9DCD920028E7CF /* CYServerModels.swift */; };
 		4FEA927E1F6F633D007A4E19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA927D1F6F633D007A4E19 /* AppDelegate.swift */; };
 		4FEA92831F6F633D007A4E19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA92811F6F633D007A4E19 /* Main.storyboard */; };
 		4FEA92851F6F633D007A4E19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA92841F6F633D007A4E19 /* Assets.xcassets */; };
@@ -85,12 +84,11 @@
 			dstSubfolderSpec = 10;
 			files = (
 				4F371E4E1F74EBA00013DAC8 /* ToastSwiftFramework.framework in Embed Frameworks */,
+				4FA794141F9DE18C006925BA /* HandyJSON.framework in Embed Frameworks */,
 				4F7F29761F7A442600EA67B6 /* HealthmeCloudSDK_iOS.framework in Embed Frameworks */,
-				4F9A07A01F7387FD008ECCD2 /* MJExtension.framework in Embed Frameworks */,
 				4F371E451F74DED90013DAC8 /* AFNetworking.framework in Embed Frameworks */,
 				4F7F29811F7A5BB700EA67B6 /* Alamofire.framework in Embed Frameworks */,
 				4F9A07931F7364C1008ECCD2 /* SQLite.framework in Embed Frameworks */,
-				4F9A07981F73697E008ECCD2 /* FMDB.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,9 +120,7 @@
 		4F8B28891F987B530028D6AB /* CYAddUpdateSubserHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYAddUpdateSubserHandler.swift; sourceTree = "<group>"; };
 		4F9A078D1F735CD3008ECCD2 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SQLite.framework; sourceTree = "<group>"; };
 		4F9A07901F735D65008ECCD2 /* CYDatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYDatabaseManager.swift; sourceTree = "<group>"; };
-		4F9A07951F736977008ECCD2 /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FMDB.framework; sourceTree = "<group>"; };
 		4F9A07991F7369A0008ECCD2 /* QmjkInternational-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QmjkInternational-Bridging-Header.h"; sourceTree = "<group>"; };
-		4F9A079D1F7387F2008ECCD2 /* MJExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MJExtension.framework; sourceTree = "<group>"; };
 		4F9A07A41F73883E008ECCD2 /* CYModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYModels.swift; sourceTree = "<group>"; };
 		4F9A42FC1F78A2E400112583 /* CYUserdefaultKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYUserdefaultKeys.swift; sourceTree = "<group>"; };
 		4F9BFC501F720FCC00BCCCCB /* CYTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYTestViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +141,8 @@
 		4FA638E51F711AB000838704 /* CYHistoryHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CYHistoryHeaderView.xib; sourceTree = "<group>"; };
 		4FA638E71F7122FC00838704 /* CYHistoryFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYHistoryFooterView.swift; sourceTree = "<group>"; };
 		4FA638E91F71230C00838704 /* CYHistoryFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CYHistoryFooterView.xib; sourceTree = "<group>"; };
+		4FA794121F9DE183006925BA /* HandyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HandyJSON.framework; sourceTree = "<group>"; };
+		4FA88CA01F9DCD920028E7CF /* CYServerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYServerModels.swift; sourceTree = "<group>"; };
 		4FEA927A1F6F633D007A4E19 /* QmjkInternational.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QmjkInternational.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEA927D1F6F633D007A4E19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FEA92821F6F633D007A4E19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -163,9 +161,6 @@
 		4FEA92F71F6FC0DA007A4E19 /* CYPersonEditingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYPersonEditingTableViewCell.swift; sourceTree = "<group>"; };
 		4FEA92F81F6FC0DA007A4E19 /* CYPersonEditingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CYPersonEditingTableViewCell.xib; sourceTree = "<group>"; };
 		4FEA92FB1F6FC935007A4E19 /* CYAddInfoFirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYAddInfoFirstViewController.swift; sourceTree = "<group>"; };
-		4FF062931F7B3A5400555551 /* HE_Dict2Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HE_Dict2Model.swift; sourceTree = "<group>"; };
-		4FF062941F7B3A5400555551 /* HE_Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HE_Foundation.swift; sourceTree = "<group>"; };
-		4FF062951F7B3A5400555551 /* HE_Model2Dict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HE_Model2Dict.swift; sourceTree = "<group>"; };
 		4FF81FFF1F9889E400278022 /* CYUploadTestDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYUploadTestDataHandler.swift; sourceTree = "<group>"; };
 		4FF820011F988D6D00278022 /* CYHistoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYHistoryHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,10 +171,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F9A07921F7364C1008ECCD2 /* SQLite.framework in Frameworks */,
+				4FA794131F9DE18C006925BA /* HandyJSON.framework in Frameworks */,
 				4F371E431F74DED00013DAC8 /* AFNetworking.framework in Frameworks */,
 				4F7F29751F7A442600EA67B6 /* HealthmeCloudSDK_iOS.framework in Frameworks */,
-				4F9A079E1F7387F2008ECCD2 /* MJExtension.framework in Frameworks */,
-				4F9A07961F736977008ECCD2 /* FMDB.framework in Frameworks */,
 				4F371E4D1F74EBA00013DAC8 /* ToastSwiftFramework.framework in Frameworks */,
 				4F7F29801F7A5BB700EA67B6 /* Alamofire.framework in Frameworks */,
 			);
@@ -257,13 +251,12 @@
 		4F9A078C1F735CC4008ECCD2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4FA794121F9DE183006925BA /* HandyJSON.framework */,
 				4F7F297F1F7A5BAF00EA67B6 /* Alamofire.framework */,
 				4F7F29741F7A419200EA67B6 /* HealthmeCloudSDK_iOS.framework */,
 				4F371E4A1F74E58D0013DAC8 /* BaseOnFrameworks */,
 				4F371E481F74E53B0013DAC8 /* ToastSwiftFramework.framework */,
 				4F371E421F74DED00013DAC8 /* AFNetworking.framework */,
-				4F9A079D1F7387F2008ECCD2 /* MJExtension.framework */,
-				4F9A07951F736977008ECCD2 /* FMDB.framework */,
 				4F9A078D1F735CD3008ECCD2 /* SQLite.framework */,
 				4F9A07991F7369A0008ECCD2 /* QmjkInternational-Bridging-Header.h */,
 			);
@@ -273,9 +266,9 @@
 		4F9A078F1F735CFC008ECCD2 /* Datas */ = {
 			isa = PBXGroup;
 			children = (
-				4FF062921F7B3A5400555551 /* HEExention */,
 				4F9A07901F735D65008ECCD2 /* CYDatabaseManager.swift */,
 				4F9A07A41F73883E008ECCD2 /* CYModels.swift */,
+				4FA88CA01F9DCD920028E7CF /* CYServerModels.swift */,
 			);
 			path = Datas;
 			sourceTree = "<group>";
@@ -438,16 +431,6 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
-		4FF062921F7B3A5400555551 /* HEExention */ = {
-			isa = PBXGroup;
-			children = (
-				4FF062931F7B3A5400555551 /* HE_Dict2Model.swift */,
-				4FF062941F7B3A5400555551 /* HE_Foundation.swift */,
-				4FF062951F7B3A5400555551 /* HE_Model2Dict.swift */,
-			);
-			path = HEExention;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -534,6 +517,7 @@
 			files = (
 				4FEA927E1F6F633D007A4E19 /* AppDelegate.swift in Sources */,
 				4FF820001F9889E400278022 /* CYUploadTestDataHandler.swift in Sources */,
+				4FA88CA11F9DCD920028E7CF /* CYServerModels.swift in Sources */,
 				4F7F297E1F7A561300EA67B6 /* CYRequestHandler.swift in Sources */,
 				4F7F297C1F7A543200EA67B6 /* CYNetworkingRequest.swift in Sources */,
 				4FF820021F988D6D00278022 /* CYHistoryHandler.swift in Sources */,

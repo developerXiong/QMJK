@@ -86,18 +86,12 @@ class CYLoginViewController: UIViewController, UITextFieldDelegate {
                 CYLoginRegistHandler.loginServer(email, password, is_success: { (isServerSuccess, serverUser, errMsg) in
                     if isServerSuccess {
                         /// 持久化userId
-                        store(serverUser?.id, key: kUserId)
+                        store(serverUser?.managerId, key: kManagerId)
                         /// 持久化user
                         self.storeUser(serverUser!)
                         /// 跳转主页面
                         self.performSegue(withIdentifier: "loginSegue", sender: self)
                         
-                        /// 本地登录
-                        CYLoginRegistHandler.loginLocation(email, password, isSuccess: { (isLocationSuccess, user) in
-                            /// 更新用户信息
-//                            let db = CYDatabaseManager.shared
-//                            db.updateData(userId: (user?.id)!, _email: (user?.email)!, _password: (user?.password)!, isUpload: false)
-                        })
                     } else {
                         CYAlertView.showText("Login failed," + errMsg, on: self.view, duration: 1.5, position: .center, style: nil)
                     }
@@ -111,9 +105,9 @@ class CYLoginViewController: UIViewController, UITextFieldDelegate {
     
     
     /// 将登陆数据存储到plist中
-    private func storeUser(_ user: CYUserInfo!) {
+    private func storeUser(_ user: CYManager!) {
         let dict = NSMutableDictionary()
-        dict["userId"] = user.id!
+        dict["managerId"] = user.managerId!
         dict["email"] = user.email!
         dict["password"] = user.password!
         

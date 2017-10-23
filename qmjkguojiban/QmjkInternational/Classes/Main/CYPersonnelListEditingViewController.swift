@@ -10,8 +10,8 @@ import UIKit
 
 class CYPersonnelListEditingViewController: UITableViewController {
 
-    var datas: [CYSubUserInfo]?
-    var sid: Int64!
+    var datas: [CYUser]?
+    var userId: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,9 +65,9 @@ class CYPersonnelListEditingViewController: UITableViewController {
         cell?.removeBlock = { section in
             /// 点击删除
             CYAlertView.showSystemAlert(on: self, title: "tips", message: "Delete?", sureHandler: { (_) in
-                let db = CYDatabaseManager.shared
-                let id = self.datas?[section].sid
-                db.delData(id: id)
+                
+                
+                
                 self.datas?.remove(at: section)
                 self.tableView.reloadData()
             }, cancelHandler: nil)
@@ -92,9 +92,8 @@ class CYPersonnelListEditingViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editToAddSegue" {
             let vc = segue.destination as! CYAddInfoFirstViewController
-            vc.user_id = Int64(USERID)!
             vc.isEditInfo = true
-            vc.sid = sid
+            vc.userId = userId
         }
     }
 

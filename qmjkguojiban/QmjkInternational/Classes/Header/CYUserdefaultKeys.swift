@@ -24,8 +24,8 @@ func store(_ value: Any?, key: String) {
 }
 
 
-let kUserId = "kQmjkInternationalUserId"
-var USERID: String {
-    return userDefaluts.string(forKey: kUserId) ?? ""
+let kManagerId = "kQmjkInternationalManagerId"
+var MANAGER_ID: String {
+    return userDefaluts.string(forKey: kManagerId) ?? ""
 }
 

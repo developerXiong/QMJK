@@ -12,40 +12,28 @@ class CYUploadTestDataHandler: NSObject {
 
     /// 上传体检记录
     static func uploadTest(_ history: CYHistory, isSuccess: ((Bool, String)->())?) {
-        CYNetworkingRequest.monitorNetworking { (isNet) in
-            if isNet {
-                self.uploadServerTest(history, isSuccess: { (isServerSuccess, errMsg) in
-                    if isServerSuccess {
-                        self.uploadLocationTest(history, isSuccess: { (isLocationSuccess) in
-                            
-                        })
-                    } else {
-                        if isSuccess != nil {
-                            isSuccess!(false, errMsg)
-                        }
-                    }
-                })
-            } else {
-                if isSuccess != nil {
-                    isSuccess!(false, "No network")
-                }
+        self.uploadServerTest(history, isSuccess: { (isServerSuccess, errMsg) in
+            
+            if isSuccess != nil {
+                isSuccess!(isServerSuccess, errMsg)
             }
-        }
+            
+        })
     }
     
     /// 上传体检记录到本地
-    static func uploadLocationTest(_ history: CYHistory, isSuccess: ((Bool)->())?) {
-        let db = CYDatabaseManager.shared
-        let isLocationSuccess = db.insert(_history: history)
-        
-        if isSuccess != nil {
-            isSuccess!(isLocationSuccess)
-        }
-    }
+//    static func uploadLocationTest(_ history: CYHistory, isSuccess: ((Bool)->())?) {
+//        let db = CYDatabaseManager.shared
+//        let isLocationSuccess = db.insert(_history: history)
+//
+//        if isSuccess != nil {
+//            isSuccess!(isLocationSuccess)
+//        }
+//    }
     
     /// 上传体检记录到服务器
     static func uploadServerTest(_ history: CYHistory, isSuccess: ((Bool, String)->())?) {
-        CYRequestHandler.uploadTestRecord(String(history.sid_id!), history.rate!, history.oxygen!, history.low!, history.high!, history.PI!, history.breath!, "unknown", success: { (isServerSuccess, data) in
+        CYRequestHandler.uploadTestRecord(history.userId!, history.monitorRate!, history.monitorOxygen!, history.monitorLow!, history.monitorHigh!, history.monitorPI!, history.monitorBreath!, "unknown", success: { (isServerSuccess, data) in
             if isSuccess != nil {
                 isSuccess!(isServerSuccess, String(describing: data!["errorMsg"]))
             }

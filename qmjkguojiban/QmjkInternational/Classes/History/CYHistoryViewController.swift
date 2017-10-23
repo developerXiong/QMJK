@@ -15,7 +15,7 @@ class CYHistoryViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    var sid: Int64?
+    var userId: String?
     
     var datas: NSArray?
     var history: CYHistory?
@@ -40,28 +40,22 @@ class CYHistoryViewController: UIViewController, UITableViewDelegate, UITableVie
     func getData() {
         datas = NSArray(contentsOfFile: Bundle.main.path(forResource: "HistoryDetail", ofType: "plist")!)
         values = [Int]()
-        values?.append((history?.low)!)
-        values?.append((history?.high)!)
-        values?.append((history?.oxygen)!)
-        values?.append((history?.rate)!)
-        values?.append((history?.breath)!)
-        values?.append((history?.PI)!)
-//        values?.append((history?.rate)!)
+        values?.append((history?.monitorLow)!)
+        values?.append((history?.monitorHigh)!)
+        values?.append((history?.monitorOxygen)!)
+        values?.append((history?.monitorRate)!)
+        values?.append((history?.monitorBreath)!)
+        values?.append((history?.monitorPI)!)
         tableView.reloadData()
     }
     
-    /// 分享?
-//    func clickRightBarbuttonItem() {
-//        
-//    }
-    
     private func setTitleView() {
-        let db = CYDatabaseManager.shared
-        guard let userInfo = db.readAData(_sid: sid!) else { return }
-        nicknameLabel.text = userInfo.name
-        sexLabel.text = userInfo.sex! ? "Male" : "Female"
-        ageLabel.text = userInfo.realAge
-        timeLabel.text = userInfo.creatTimeStr
+        
+        
+//        nicknameLabel.text = userInfo.name
+//        sexLabel.text = userInfo.sex! ? "Male" : "Female"
+//        ageLabel.text = userInfo.realAge
+//        timeLabel.text = userInfo.creatTimeStr
     }
     
     // MARK: - Table view data source

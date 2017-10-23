@@ -33,10 +33,10 @@ class CYPersonCell: UITableViewCell {
     }
     
     /// 设置cell
-    func setCell(_ user: CYSubUserInfo) {
+    func setCell(_ user: CYUser) {
         
-        nicknameLabel.text = user.name
-        dateLabel.text = user.creatTimeStr
+        nicknameLabel.text = user.userName
+        dateLabel.text = user.createTime
     }
     
     /// 开始测量

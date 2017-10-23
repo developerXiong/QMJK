@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
         let loginVc = sb.instantiateInitialViewController()
         let mainVc = sb.instantiateViewController(withIdentifier: "MainNavigationController_ID")
-        self.window?.rootViewController = USERID.isEmpty ? loginVc : mainVc
+        self.window?.rootViewController = MANAGER_ID.isEmpty ? loginVc : mainVc
         
         return true
     }
