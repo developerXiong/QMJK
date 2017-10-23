@@ -11,7 +11,7 @@ import UIKit
 class CYHistoryListViewController: UITableViewController {
 
     var userId: String?
-    var datas: [CYHistory]?
+    var datas: [CYHistory]! = [CYHistory]()
     var row: Int!
     
     override func viewDidLoad() {
@@ -47,18 +47,18 @@ class CYHistoryListViewController: UITableViewController {
     }
     
     private func getData() {
-        
         CYHistoryHandler.getHistory(userId!) { (historys, errMsg) in
-            self.datas = historys
+            if historys != nil {
+                self.datas = historys
+            }
             self.tableView.reloadData()
         }
-        
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (datas?.count)!
+        return datas.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

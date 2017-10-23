@@ -38,7 +38,17 @@ struct CYUser: HandyJSON {
     
     /// 字典数组转模型数组
     static func objectWithKeyValues(_ jsonArray: [[String : Any]]) -> [CYUser?]? {
-        if let result = [CYUser].deserialize(from: jsonArray) {
+        if var result = [CYUser].deserialize(from: jsonArray) {
+            var r: CYUser?
+            for i in 0..<result.count {
+                r = result[i]
+                guard let c = r?.createTime else {
+                    break
+                }
+                let index = c.index(c.endIndex, offsetBy: -3)
+                r?.createTime = String(c[..<index])
+                result[i] = r
+            }
             return result
         }
         return nil
