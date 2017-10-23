@@ -47,11 +47,12 @@ class CYHistoryListViewController: UITableViewController {
     }
     
     private func getData() {
-        let db = CYDatabaseManager.shared
-        datas = [CYHistory]()
-        datas = db.readAllData(sid: sid!)
         
-        tableView.reloadData()
+        CYHistoryHandler.getHistory(sid!) { (historys) in
+            self.datas = historys
+            self.tableView.reloadData()
+        }
+        
     }
 
     // MARK: - Table view data source
@@ -63,7 +64,6 @@ class CYHistoryListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("CYHistoryListCell", owner: nil, options: nil)?.last as? CYHistoryListCell
 
-        self.row = indexPath.row
         cell?.row = indexPath.row
         cell?.setCell(with: datas![indexPath.row])
 
@@ -71,6 +71,7 @@ class CYHistoryListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.row = indexPath.row
         self.performSegue(withIdentifier: "historyDetailSegue", sender: self)
     }
     

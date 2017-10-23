@@ -78,44 +78,37 @@ class CYLoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        /// request server
-//        CYRequestHandler.login(email, password: password, success: { (isSuccess, data) in
-//            if isSuccess {
-//                /// 登录成功
-//                guard let data = data else { return }
-//                var user = CYUserInfo()
-//                user.email = email
-//                user.password = password
-//                user.id = data["userManager"] as? Int64
-//                print_debug("Login success")
-//                self.loginQmjk(email)
-//                /// 持久化userId
-//                store(user.id, key: kUserId)
-//                self.storeUser(user)
-//                self.performSegue(withIdentifier: "loginSegue", sender: self)
-//            } else {
-//                /// 登录失败
-//                CYAlertView.showText("User doesn't exist", on: self.view, duration: 1.5, position: .center, style: nil)
-//            }
-//        }) { (error) in
-//            CYAlertView.showText("Login failed, please check your email and password", on: self.view, duration: 1.5, position: .center, style: nil)
-//        }
-        
-        let db = CYDatabaseManager.shared
-        let user = db.readAData(_email: email, _password: password)
-        
-        guard let _user = user else {
-            CYAlertView.showText("User doesn't exist", on: self.view, duration: 1.5, position: .center, style: nil)
-            return
+        /// 登录qmjk云平台
+        CYLoginRegistHandler.loginQmjk(email) { (isQmjkSuccess, errMsg) in
+            if isQmjkSuccess {
+                
+                /// 服务器登录
+                CYLoginRegistHandler.loginServer(email, password, is_success: { (isServerSuccess, serverUser, errMsg) in
+                    if isServerSuccess {
+                        /// 持久化userId
+                        store(serverUser?.id, key: kUserId)
+                        /// 持久化user
+                        self.storeUser(serverUser!)
+                        /// 跳转主页面
+                        self.performSegue(withIdentifier: "loginSegue", sender: self)
+                        
+                        /// 本地登录
+                        CYLoginRegistHandler.loginLocation(email, password, isSuccess: { (isLocationSuccess, user) in
+                            /// 更新用户信息
+//                            let db = CYDatabaseManager.shared
+//                            db.updateData(userId: (user?.id)!, _email: (user?.email)!, _password: (user?.password)!, isUpload: false)
+                        })
+                    } else {
+                        CYAlertView.showText("Login failed," + errMsg, on: self.view, duration: 1.5, position: .center, style: nil)
+                    }
+                })
+            } else {
+                CYAlertView.showText("Login failed, user is not exists", on: self.view, duration: 1.5, position: .center, style: nil)
+            }
         }
         
-        print_debug("Login success")
-        loginQmjk(email)
-        /// 持久化userId
-        store(_user.id, key: kUserId)
-        storeUser(_user)
-        self.performSegue(withIdentifier: "loginSegue", sender: self)
     }
+    
     
     /// 将登陆数据存储到plist中
     private func storeUser(_ user: CYUserInfo!) {
@@ -139,19 +132,6 @@ class CYLoginViewController: UIViewController, UITextFieldDelegate {
         datas?.write(toFile: loginInfoPath, atomically: true)
     }
     
-    func loginQmjk(_ account: String) {
-        QmjkRegisterHttpHandler.login(withAccount: account, success: { (response) in
-            let resp = response as! [AnyHashable : Any]
-            let errorMsg = resp["errorMsg"] as! String
-            if errorMsg.isEmpty {
-                print_debug("登录qmjk成功:\(response!)")
-            } else {
-                print_debug("登录qmjk失败: \(errorMsg)")
-            }
-        }) { (error) in
-            print_debug("登录qmjk错误: \(error!)")
-        }
-    }
 
     /// 点击下拉
     @IBAction func more(_ sender: Any) {
@@ -168,7 +148,7 @@ class CYLoginViewController: UIViewController, UITextFieldDelegate {
             }
             self.dropdownView?.values = emails
             self.dropdownView?.selectRowAtIndex = { row in
-                print_debug("点击第\(row)个")
+                debugPrint("点击第\(row)个")
                 self.hiddenDropdownView()
             }
         }
@@ -187,7 +167,7 @@ class CYLoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print_debug("点击屏幕")
+        debugPrint("点击屏幕")
         emailTF.resignFirstResponder()
         passwordTF.resignFirstResponder()
         hiddenDropdownView()

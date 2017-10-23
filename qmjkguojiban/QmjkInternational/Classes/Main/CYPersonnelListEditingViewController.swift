@@ -38,7 +38,7 @@ class CYPersonnelListEditingViewController: UITableViewController {
     }
 
     /// 编辑完成
-    func clickRightBarButtonItem() {
+    @objc func clickRightBarButtonItem() {
         self.navigationController?.popViewController(animated: true)
     }
 

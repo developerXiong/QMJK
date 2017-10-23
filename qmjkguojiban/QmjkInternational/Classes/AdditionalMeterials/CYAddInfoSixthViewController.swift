@@ -19,11 +19,15 @@ class CYAddInfoSixthViewController: UIViewController {
     var isEditInfo = false    // 是否为编辑资料
     var sid: Int64?
     
-    let highValues = ["80 mmHg", "90 mmHg", "100 mmHg", "110 mmHg"]
-    let lowValues = ["50 mmHg", "60 mmHg", "70 mmHg", "80 mmHg"]
+    let highValues = ["100~109 mmHg", "110~119 mmHg", "120~129 mmHg", "130~139 mmHg", "140~149 mmHg", "150~159 mmHg"]
+    let highBPs = ["105", "115", "125", "135", "145", "155"]
+    let lowValues = ["50~59 mmHg", "60~69 mmHg", "70~79 mmHg", "80~89 mmHg", "90~99 mmHg", "100~109"]
+    let lowBPs = ["55", "65", "75", "85", "95", "105"]
     
     var highH: CGFloat! = 0
     var lowH: CGFloat! = 0
+    var highIndex: Int = 0
+    var lowIndex: Int = 0
     
     var dropdownHighView: CYDropdownView!
     var dropdownLowView: CYDropdownView!
@@ -35,8 +39,10 @@ class CYAddInfoSixthViewController: UIViewController {
     }
     
     func initViews() {
-        highBtn.setTitle(highValues[0], for: .normal)
-        lowBtn.setTitle(lowValues[0], for: .normal)
+        highIndex = 2
+        lowIndex = 2
+        highBtn.setTitle(highValues[highIndex], for: .normal)
+        lowBtn.setTitle(lowValues[lowIndex], for: .normal)
         
         dropdownHighView = CYDropdownView(frame: CGRect(x: 38, y: highBtn.BottomY + 1 + highView.TopY, width: screenW - 38 * 2 , height: 0))
         dropdownLowView = CYDropdownView(frame: CGRect(x: 38, y: lowBtn.BottomY + 1 + lowView.TopY, width: screenW - 38 * 2, height: 0))
@@ -67,8 +73,14 @@ class CYAddInfoSixthViewController: UIViewController {
             view.frame.size.height = isHigh ? self.highH:self.lowH
             view.values = isHigh ? self.highValues:self.lowValues
             view.selectRowAtIndex = { row in
-                print_debug("点击第\(row)个")
-                isHigh ? self.highBtn.setTitle(self.highValues[row], for: .normal) : self.lowBtn.setTitle(self.lowValues[row], for: .normal)
+                debugPrint("点击第\(row)个")
+                if isHigh {
+                    self.highIndex = row
+                    self.highBtn.setTitle(self.highValues[row], for: .normal)
+                } else {
+                    self.lowIndex = row
+                    self.lowBtn.setTitle(self.lowValues[row], for: .normal)
+                }
                 self.hidden(view)
             }
         }
@@ -86,40 +98,38 @@ class CYAddInfoSixthViewController: UIViewController {
     
     /// 添加子用户
     @IBAction func finishingAction(_ sender: Any) {
-        let low = lowBtn.currentTitle!
-        let high = highBtn.currentTitle!
-        user.lowBP = low.replacingOccurrences(of: " mmHg", with: "")
-        user.highBP = high.replacingOccurrences(of: " mmHg", with: "")
+        
+        user.lowBP = lowBPs[lowIndex]
+        user.highBP = highBPs[highIndex]
         user.creatTime = Date()
-        let db = CYDatabaseManager.shared
         
         if isEditInfo {
+            /// 更新用户
             if sid == nil {
                 CYAlertView.showText("Update sub user failed", on: view, duration: 1.5, position: .center)
             }
             user.sid = sid!
-            let isSuccess = db.updateData(user: user)
-            if !isSuccess {
-                CYAlertView.showText("Update sub user failed", on: view, duration: 1.5, position: .center)
-                return
-            } else {
-                print_debug(user)
-            }
             
-            self.navigationController?.popToRootViewController(animated: true)
+            CYAddUpdateSubserHandler.updateUser(user, isSuccess: { (isSuccess, errMsg) in
+                if isSuccess {
+                    CYAlertView.showText("Update sub user success", on: self.view, duration: 1.5, position: .center)
+                    self.navigationController?.popToRootViewController(animated: true)
+                } else {
+                    CYAlertView.showText("Update sub user failure," + errMsg, on: self.view, duration: 1.5, position: .center)
+                }
+            })
+            
         } else {
-            let isSuccess = db.insertData(subUser: user)
-            if !isSuccess {
-                CYAlertView.showText("Add sub user failure", on: view, duration: 1.5, position: .center)
-                return
-            } else {
-                print_debug(user)
-            }
-            
-            self.navigationController?.popToRootViewController(animated: true)
+            /// 添加用户
+            CYAddUpdateSubserHandler.addUser(user, isSuccess: { (isSuccess, errMsg) in
+                if isSuccess {
+                    CYAlertView.showText("Add sub user success", on: self.view, duration: 1.5, position: .center)
+                    self.navigationController?.popToRootViewController(animated: true)
+                } else {
+                    CYAlertView.showText("Add sub user failure," + errMsg, on: self.view, duration: 1.5, position: .center)
+                }
+            })
         }
-        
-        
     }
     
 }

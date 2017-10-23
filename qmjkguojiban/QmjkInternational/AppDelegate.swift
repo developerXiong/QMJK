@@ -8,15 +8,19 @@
 
 import UIKit
 
+var isCanTest = false
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         QmjkLib.manager.registApp(withAppID: qmjkAppId, appKey: qmjkAppKey)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
+            isCanTest = true
+        }
         
         /// 初始化页面
         let sb = UIStoryboard.init(name: "Main", bundle: nil)

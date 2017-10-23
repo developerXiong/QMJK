@@ -163,7 +163,7 @@
     }
     
     
-    maskView.frame = CGRectMake(startX - 2, 0, 30, self.frame.size.height);
+    maskView.frame = CGRectMake(startX - 2, 0, 10, self.frame.size.height);
     showPointCount ++;
     if (showPointCount >= PointCountInScreen) {
         showPointCount = PointCountInScreen - 1;

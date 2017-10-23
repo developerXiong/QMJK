@@ -254,6 +254,15 @@ typedef enum : NSUInteger {
  */
 - (double)getMonitorBreath;
 
+// 获取平衡指数
+-(double)getMonitorBalance;
+
+// 获取精神压力指数
+- (double)getMonitorMentalscore;
+
+// 获取疲劳指数
+- (double)getMonitorPhysical;
+
 /**
  获取蓝牙设备电量
  */

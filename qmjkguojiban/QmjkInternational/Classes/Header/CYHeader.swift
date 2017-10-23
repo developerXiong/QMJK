@@ -11,7 +11,7 @@ import UIKit
 
 
 // MARK: 打印
-func print_debug(_ items: Any...) { if true { print(items) } }
+//func debugPrint(_ items: Any...) { if true { print(items) } }
 
 // MARK: 颜色相关
 
@@ -47,7 +47,7 @@ func setNavbarTintColor(vc: UIViewController?, isNormal: Bool) {
     guard let vc = vc else { return }
     func setBarTintColor(_ isNormal: Bool) {
         vc.navigationController?.navigationBar.barTintColor = isNormal ? UIColor.white : blueColor
-        vc.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : isNormal ? UIColor.black : UIColor.white]
+        vc.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : isNormal ? UIColor.black : UIColor.white]
         vc.navigationController?.navigationBar.tintColor = isNormal ? UIColor.black : UIColor.white
     }
 }
@@ -148,28 +148,49 @@ extension UIView {
 func getTextHeigh(textStr:String,font:UIFont,width:CGFloat) -> CGFloat {
     let normalText: NSString = textStr as NSString
     let size = CGSize(width: width, height: CGFloat(MAXFLOAT))
-    let dic = NSDictionary(object: font, forKey: NSFontAttributeName as NSCopying)
-    let stringSize = normalText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic as? [String : AnyObject], context:nil).size
+    let dic = NSDictionary(object: font, forKey: NSAttributedStringKey.font as NSCopying)
+    let stringSize = normalText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic as? [NSAttributedStringKey : Any], context:nil).size
     return stringSize.height
 }
 
 func getTextWidth(textStr:String,font:UIFont,height:CGFloat) -> CGFloat {
     let normalText: NSString = textStr as NSString
     let size = CGSize(width: CGFloat(MAXFLOAT), height: height)
-    let dic = NSDictionary(object: font, forKey: NSFontAttributeName as NSCopying)
-    let stringSize = normalText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic as? [String : AnyObject], context:nil).size
+    let dic = NSDictionary(object: font, forKey: NSAttributedStringKey.font as NSCopying)
+    let stringSize = normalText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic as? [NSAttributedStringKey : Any], context:nil).size
     return stringSize.width
 }
 
 func getTextSize(textStr:String,font:CGFloat) -> CGSize {
     let normalText: NSString = textStr as NSString
     let size = CGSize(width: CGFloat(MAXFLOAT), height: CGFloat(MAXFLOAT))
-    let dic = NSDictionary(object: UIFont.systemFont(ofSize: font), forKey: NSFontAttributeName as NSCopying)
-    return normalText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic as? [String : AnyObject], context:nil).size
+    let dic = NSDictionary(object: UIFont.systemFont(ofSize: font), forKey: NSAttributedStringKey.font as NSCopying)
+    return normalText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic as? [NSAttributedStringKey : Any], context:nil).size
 }
 
 // MARK: 尺寸相关
 let screenW = UIScreen.main.bounds.size.width
 let screenH = UIScreen.main.bounds.size.height
+
+// MARK: 机型
+enum IPHONEMODELNUMBER {
+    case FIVE
+    case SIX
+    case PLUS
+    case UNKNOMN
+}
+func IPHONEMODEL() -> IPHONEMODELNUMBER {
+    if screenW == 320 {
+        // 5
+        return .FIVE
+    } else if screenW == 375 {
+        // 6
+        return .SIX
+    } else if screenW == 414 {
+        return .PLUS
+    } else {
+        return .UNKNOMN
+    }
+}
 
 

@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: 用户模型
-struct CYUserInfo {
+class CYUserInfo: NSObject {
 
     var id: Int64?
     var email: String?
@@ -18,7 +18,7 @@ struct CYUserInfo {
 }
 
 // MARK: 子用户模型
-struct CYSubUserInfo {
+class CYSubUserInfo: NSObject {
     
     var sid: Int64?
     var name: String?
@@ -29,7 +29,7 @@ struct CYSubUserInfo {
     }
     var creatTime: Date?
     var sex: Bool?       // true: 男 false: 女
-    var birth: String?
+    var birth: String?   // "yyyy-MM-dd"
     var realAge: String? {
         guard let birth = birth else {
             return nil
@@ -39,7 +39,8 @@ struct CYSubUserInfo {
 //        let yearDate = dfm.date(from: birth)
 //        let year = dfm.string(from: yearDate!)
 //        let year = birth[birth.startIndex..<birth.startIndex.advanced(by: 1)]
-        let year = birth.substring(to: birth.startIndex.advanced(by: 4))
+//        let year = birth.substring(to: birth.startIndex.advanced(by: 4))
+        let year = birth.split(separator: "-")[0]
         let currentYear = dfm.string(from: Date())
         let age = Int(currentYear)! - Int(year)!
         return "\(age)"
@@ -53,7 +54,7 @@ struct CYSubUserInfo {
 }
 
 // MARK: 历史记录模型
-struct CYHistory {
+class CYHistory: NSObject {
     
     var hid: Int64?
     var rate: Int?

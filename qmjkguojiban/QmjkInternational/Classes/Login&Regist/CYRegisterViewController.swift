@@ -42,68 +42,23 @@ class CYRegisterViewController: UIViewController,UITextFieldDelegate {
             return
         }
         
-        /// request server
-//        CYRequestHandler.regist(email, password, success: { (isSuccess, data) in
-//            if isSuccess {
-//                CYAlertView.showText("Regist success", on: self.view, duration: 1.5, position: .center, style: nil)
-//                self.navigationController?.popViewController(animated: true)
-//            } else {
-//                CYAlertView.showText("User already exists", on: self.view, duration: 1.5, position: .center, style: nil)
-//            }
-//        }) { (error) in
-//            CYAlertView.showText("Regist failure", on: self.view, duration: 1.5, position: .center, style: nil)
-//        }
-        
-        let db = CYDatabaseManager.shared
-        let isSuccess = db.insertData(_password: password, _email: email, _isUpload: false)
-        
-        registQmjk { (_isSuccess, errMsg) in
-            if isSuccess && _isSuccess {
-                CYAlertView.showText("Regist success", on: self.view, duration: 1.5, position: .center, style: nil)
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5, execute: {
-                    self.navigationController?.popViewController(animated: true)
+        /// 注册全民健康云平台
+        CYLoginRegistHandler.registQmjk(email, isSuccess: { (isCloudSuccess, errMsg) in
+            if isCloudSuccess {
+                /// 先走服务器
+                CYLoginRegistHandler.registServer(email, password, is_success: { (isServerSuccess, errMsg) in
+                    if isServerSuccess {
+                        CYAlertView.showText("Regist success", on: self.view, duration: 1.5, position: .center, style: nil)
+                        /// 本地注册
+                        CYLoginRegistHandler.registLocation(email, password, isSuccess: nil)
+                    } else {
+                        CYAlertView.showText("Regist failure," + errMsg, on: self.view, duration: 1.5, position: .center, style: nil)
+                    }
                 })
             } else {
-                CYAlertView.showText("Regist failure", on: self.view, duration: 1.5, position: .center, style: nil)
+                CYAlertView.showText("Regist failure," + errMsg, on: self.view, duration: 1.5, position: .center, style: nil)
             }
-        }
-        
-    }
-    
-    /// 注册全民健康sdk账号
-    private func registQmjk(_ isSuccess:((Bool, String)->())?) {
-        var params = [String: Any]()
-        params["userAccount"] = emailTF.text
-        params["sex"] = "1"
-        params["birth"] = "1990-01-01"
-        params["height"] = "178"
-        params["weight"] = "66"
-        params["infoLow"] = ""
-        params["infoHigh"] = ""
-        params["infoBPSituation"] = "4"
-        QmjkRegisterHttpHandler.addUserInfo(params, success: { (response) in
-            let data = response as! [String : Any]
-            let errorMsg = data["errorMsg"] as! String
-            if errorMsg.isEmpty {
-                /// 注册全民健康账号成功
-                if isSuccess != nil {
-                    isSuccess!(true, errorMsg)
-                }
-                debugPrint("注册全民健康账号成功")
-            } else {
-                /// 注册全民健康账号失败
-                if isSuccess != nil {
-                    isSuccess!(false, errorMsg)
-                }
-                debugPrint("注册全民健康账号失败")
-            }
-        }) { (error) in
-            /// 注册全民健康账号失败
-            if isSuccess != nil {
-                isSuccess!(false, error.debugDescription)
-            }
-            debugPrint("注册全民健康账号失败")
-        }
+        })
     }
     
     
@@ -112,7 +67,7 @@ class CYRegisterViewController: UIViewController,UITextFieldDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print_debug("点击屏幕")
+        debugPrint("点击屏幕")
         emailTF.resignFirstResponder()
         passwordTF.resignFirstResponder()
         confirmPasswordTF.resignFirstResponder()

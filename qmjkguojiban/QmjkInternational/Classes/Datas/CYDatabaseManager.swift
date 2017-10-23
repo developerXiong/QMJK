@@ -55,7 +55,7 @@ class CYDatabaseManager {
         do {
             db = try Connection(sqlFilePath)
         } catch {
-            print_debug("connect db error: \(error)")
+            debugPrint("connect db error: \(error)")
         }
         createdTableUser()
         createdTableSubUser()
@@ -72,7 +72,7 @@ class CYDatabaseManager {
                 t.column(isUpload_user, defaultValue: false)
             })
             debugPrint("建表users成功!")
-        } catch { print_debug("create user table error: \(error)") }
+        } catch { debugPrint("create user table error: \(error)") }
     }
     
     /// 创建subUser 表
@@ -93,9 +93,9 @@ class CYDatabaseManager {
                 t.foreignKey(user_id, references: users, id, delete: .setNull)
             })
             debugPrint("建表subUsers成功!")
-        } catch { print_debug("create subUser table error: \(error) \nEnd") }
+        } catch { debugPrint("create subUser table error: \(error) \nEnd") }
         db.trace({ (statement) in
-            print_debug("---\(statement)")
+            debugPrint("---\(statement)")
         })
     }
     
@@ -116,9 +116,9 @@ class CYDatabaseManager {
                 t.foreignKey(sid_id, references: subUsers, sid, delete: .setNull)
             })
             debugPrint("建表history成功!")
-        } catch { print_debug("create history table error: \(error) \nEnd") }
+        } catch { debugPrint("create history table error: \(error) \nEnd") }
         db.trace({ (statement) in
-            print_debug("---\(statement)")
+            debugPrint("---\(statement)")
         })
     }
     
@@ -129,10 +129,10 @@ class CYDatabaseManager {
         do {
             let insert = users.insert(password <- _password, email <- _email, isUpload_user <- _isUpload)
             let rowid = try db.run(insert)
-            print_debug("插入用户成功\(rowid)");
+            debugPrint("插入用户成功\(rowid)");
             return true
         } catch {
-            print_debug(error)
+            debugPrint(error)
             return false
         }
     }
@@ -164,7 +164,7 @@ class CYDatabaseManager {
                 user?.isUpload = u[isUpload_user]
             }
         } catch {
-            print_debug("\(error)")
+            debugPrint("\(error)")
         }
         return user
     }
@@ -175,7 +175,7 @@ class CYDatabaseManager {
         do {
             try db.run(currUser.update(password <- _password, email <- _email, isUpload_user <- isUpload))
         } catch {
-            print_debug(error)
+            debugPrint(error)
         }
     }
     
@@ -188,7 +188,7 @@ class CYDatabaseManager {
         do {
             try db.run(currUser.delete())
         } catch {
-            print_debug(error)
+            debugPrint(error)
         }
     }
 
@@ -201,17 +201,17 @@ class CYDatabaseManager {
         do {
             let insert = subUsers.insert(name <- user.name!, createTime <- user.creatTime!, sex <- user.sex!, birth <- user.birth!, height <- user.height!, weight <- user.weight!, highBP <- user.highBP!, lowBP <- user.lowBP!, isUpload_sub <- user.isUpload, user_id <- user.user_id!)
             let rowid = try db.run(insert)
-            print_debug("插入成功\(rowid)");
+            debugPrint("插入成功\(rowid)");
             return true
         } catch {
-            print_debug(error)
+            debugPrint(error)
             return false
         }
     }
     
     /// 读取所有子用户
     func readAllData(userId: Int64) -> [CYSubUserInfo] {
-        var userData = CYSubUserInfo()
+        let userData = CYSubUserInfo()
         var userDataArr = [CYSubUserInfo]()
 //        let statement = subUsers.join(users, on: user_id == id && userId == 1)
         let statement = subUsers.filter(user_id == userId)
@@ -231,7 +231,7 @@ class CYDatabaseManager {
                 userDataArr.append(userData)
             }
         } catch {
-            print_debug("read sub user error:\(error)")
+            debugPrint("read sub user error:\(error)")
         }
         return userDataArr
     }
@@ -255,7 +255,7 @@ class CYDatabaseManager {
                 userData?.user_id = user[user_id]
             }
         } catch {
-            print_debug("read sub user error:\(error)")
+            debugPrint("read sub user error:\(error)")
         }
         return userData
     }
@@ -267,7 +267,7 @@ class CYDatabaseManager {
             try db.run(currUser.update(name <- user.name!, createTime <- user.creatTime!, sex <- user.sex!, birth <- user.birth!, height <- user.height!, weight <- user.weight!, highBP <- user.highBP!, lowBP <- user.lowBP!, isUpload_sub <- user.isUpload))
             return true
         } catch {
-            print_debug(error)
+            debugPrint(error)
             return false
         }
     }
@@ -282,7 +282,7 @@ class CYDatabaseManager {
         do {
             try db.run(currUser.delete())
         } catch {
-            print_debug(error)
+            debugPrint(error)
         }
     }
     
@@ -293,10 +293,10 @@ class CYDatabaseManager {
         do {
             let insert = history.insert(rate <- _history.rate!, oxygen <- _history.oxygen!, breath <- _history.breath!, high <- _history.high!, low <- _history.low!, PI <- _history.PI!, createTime_h <- _history.createTime!, isUpload_history <- _history.isUpload, sid_id <- _history.sid_id!)
             let rowid = try db.run(insert)
-            print_debug("插入成功\(rowid)");
+            debugPrint("插入成功\(rowid)");
             return true
         } catch {
-            print_debug(error)
+            debugPrint(error)
             return false
         }
     }
@@ -320,7 +320,7 @@ class CYDatabaseManager {
                 userDataArr.insert(userData, at: 0)
             }
         } catch {
-            print_debug("read history error:\(error)")
+            debugPrint("read history error:\(error)")
         }
         return userDataArr
     }
@@ -331,7 +331,7 @@ class CYDatabaseManager {
         do {
             try db.run(currUser.update(rate <- _history.rate!, oxygen <- _history.oxygen!, breath <- _history.breath!, high <- _history.high!, low <- _history.low!, PI <- _history.PI!,createTime_h <- _history.createTime!, isUpload_history <- _history.isUpload))
         } catch {
-            print_debug(error)
+            debugPrint(error)
         }
     }
     
@@ -345,7 +345,7 @@ class CYDatabaseManager {
         do {
             try db.run(currUser.delete())
         } catch {
-            print_debug(error)
+            debugPrint(error)
         }
     }
 }

@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F0BA1E81F8CA61400D3DC52 /* CYCycleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0BA1E71F8CA61400D3DC52 /* CYCycleProgressView.swift */; };
+		4F0BA1EB1F8CB43B00D3DC52 /* CYWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0BA1EA1F8CB43B00D3DC52 /* CYWaveView.swift */; };
 		4F371E431F74DED00013DAC8 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F371E421F74DED00013DAC8 /* AFNetworking.framework */; };
-		4F371E441F74DED90013DAC8 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F371E421F74DED00013DAC8 /* AFNetworking.framework */; };
 		4F371E451F74DED90013DAC8 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F371E421F74DED00013DAC8 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4F371E491F74E53B0013DAC8 /* ToastSwiftFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F371E481F74E53B0013DAC8 /* ToastSwiftFramework.framework */; };
 		4F371E4C1F74E5AA0013DAC8 /* CYAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F371E4B1F74E5AA0013DAC8 /* CYAlertView.swift */; };
 		4F371E4D1F74EBA00013DAC8 /* ToastSwiftFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F371E481F74E53B0013DAC8 /* ToastSwiftFramework.framework */; };
 		4F371E4E1F74EBA00013DAC8 /* ToastSwiftFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F371E481F74E53B0013DAC8 /* ToastSwiftFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -27,15 +27,15 @@
 		4F85B6DA1F721C9F00C38ADD /* CYTestPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F85B6D91F721C9F00C38ADD /* CYTestPageView.swift */; };
 		4F85B6DD1F724AF100C38ADD /* CYNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F85B6DC1F724AF100C38ADD /* CYNavigationController.swift */; };
 		4F85B6E21F725EB600C38ADD /* CYDropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F85B6E11F725EB600C38ADD /* CYDropdownView.swift */; };
-		4F9A078E1F735CD3008ECCD2 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9A078D1F735CD3008ECCD2 /* SQLite.framework */; };
+		4F8B28861F9844A70028D6AB /* CYLoginRegistHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B28851F9844A70028D6AB /* CYLoginRegistHandler.swift */; };
+		4F8B28881F9853690028D6AB /* CYPersonnelDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B28871F9853690028D6AB /* CYPersonnelDataHandler.swift */; };
+		4F8B288A1F987B530028D6AB /* CYAddUpdateSubserHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B28891F987B530028D6AB /* CYAddUpdateSubserHandler.swift */; };
 		4F9A07911F735D65008ECCD2 /* CYDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A07901F735D65008ECCD2 /* CYDatabaseManager.swift */; };
 		4F9A07921F7364C1008ECCD2 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9A078D1F735CD3008ECCD2 /* SQLite.framework */; };
 		4F9A07931F7364C1008ECCD2 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9A078D1F735CD3008ECCD2 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F9A07961F736977008ECCD2 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9A07951F736977008ECCD2 /* FMDB.framework */; };
-		4F9A07971F73697E008ECCD2 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9A07951F736977008ECCD2 /* FMDB.framework */; };
 		4F9A07981F73697E008ECCD2 /* FMDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9A07951F736977008ECCD2 /* FMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F9A079E1F7387F2008ECCD2 /* MJExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9A079D1F7387F2008ECCD2 /* MJExtension.framework */; };
-		4F9A079F1F7387FD008ECCD2 /* MJExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9A079D1F7387F2008ECCD2 /* MJExtension.framework */; };
 		4F9A07A01F7387FD008ECCD2 /* MJExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9A079D1F7387F2008ECCD2 /* MJExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F9A07A51F73883E008ECCD2 /* CYModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A07A41F73883E008ECCD2 /* CYModels.swift */; };
 		4F9A42FD1F78A2E400112583 /* CYUserdefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A42FC1F78A2E400112583 /* CYUserdefaultKeys.swift */; };
@@ -73,6 +73,8 @@
 		4FEA92F91F6FC0DA007A4E19 /* CYPersonEditingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA92F71F6FC0DA007A4E19 /* CYPersonEditingTableViewCell.swift */; };
 		4FEA92FA1F6FC0DA007A4E19 /* CYPersonEditingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA92F81F6FC0DA007A4E19 /* CYPersonEditingTableViewCell.xib */; };
 		4FEA92FC1F6FC935007A4E19 /* CYAddInfoFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA92FB1F6FC935007A4E19 /* CYAddInfoFirstViewController.swift */; };
+		4FF820001F9889E400278022 /* CYUploadTestDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF81FFF1F9889E400278022 /* CYUploadTestDataHandler.swift */; };
+		4FF820021F988D6D00278022 /* CYHistoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF820011F988D6D00278022 /* CYHistoryHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -96,6 +98,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4F0BA1E71F8CA61400D3DC52 /* CYCycleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYCycleProgressView.swift; sourceTree = "<group>"; };
+		4F0BA1EA1F8CB43B00D3DC52 /* CYWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYWaveView.swift; sourceTree = "<group>"; };
 		4F371E421F74DED00013DAC8 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
 		4F371E481F74E53B0013DAC8 /* ToastSwiftFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ToastSwiftFramework.framework; sourceTree = "<group>"; };
 		4F371E4B1F74E5AA0013DAC8 /* CYAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYAlertView.swift; sourceTree = "<group>"; };
@@ -113,6 +117,9 @@
 		4F85B6D91F721C9F00C38ADD /* CYTestPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYTestPageView.swift; sourceTree = "<group>"; };
 		4F85B6DC1F724AF100C38ADD /* CYNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYNavigationController.swift; sourceTree = "<group>"; };
 		4F85B6E11F725EB600C38ADD /* CYDropdownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYDropdownView.swift; sourceTree = "<group>"; };
+		4F8B28851F9844A70028D6AB /* CYLoginRegistHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYLoginRegistHandler.swift; sourceTree = "<group>"; };
+		4F8B28871F9853690028D6AB /* CYPersonnelDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYPersonnelDataHandler.swift; sourceTree = "<group>"; };
+		4F8B28891F987B530028D6AB /* CYAddUpdateSubserHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYAddUpdateSubserHandler.swift; sourceTree = "<group>"; };
 		4F9A078D1F735CD3008ECCD2 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SQLite.framework; sourceTree = "<group>"; };
 		4F9A07901F735D65008ECCD2 /* CYDatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYDatabaseManager.swift; sourceTree = "<group>"; };
 		4F9A07951F736977008ECCD2 /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FMDB.framework; sourceTree = "<group>"; };
@@ -159,6 +166,8 @@
 		4FF062931F7B3A5400555551 /* HE_Dict2Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HE_Dict2Model.swift; sourceTree = "<group>"; };
 		4FF062941F7B3A5400555551 /* HE_Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HE_Foundation.swift; sourceTree = "<group>"; };
 		4FF062951F7B3A5400555551 /* HE_Model2Dict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HE_Model2Dict.swift; sourceTree = "<group>"; };
+		4FF81FFF1F9889E400278022 /* CYUploadTestDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYUploadTestDataHandler.swift; sourceTree = "<group>"; };
+		4FF820011F988D6D00278022 /* CYHistoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYHistoryHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,19 +180,22 @@
 				4F7F29751F7A442600EA67B6 /* HealthmeCloudSDK_iOS.framework in Frameworks */,
 				4F9A079E1F7387F2008ECCD2 /* MJExtension.framework in Frameworks */,
 				4F9A07961F736977008ECCD2 /* FMDB.framework in Frameworks */,
-				4F9A079F1F7387FD008ECCD2 /* MJExtension.framework in Frameworks */,
 				4F371E4D1F74EBA00013DAC8 /* ToastSwiftFramework.framework in Frameworks */,
 				4F7F29801F7A5BB700EA67B6 /* Alamofire.framework in Frameworks */,
-				4F9A078E1F735CD3008ECCD2 /* SQLite.framework in Frameworks */,
-				4F371E441F74DED90013DAC8 /* AFNetworking.framework in Frameworks */,
-				4F371E491F74E53B0013DAC8 /* ToastSwiftFramework.framework in Frameworks */,
-				4F9A07971F73697E008ECCD2 /* FMDB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F0BA1E91F8CB42000D3DC52 /* 画真实波形 */ = {
+			isa = PBXGroup;
+			children = (
+				4F0BA1EA1F8CB43B00D3DC52 /* CYWaveView.swift */,
+			);
+			path = "画真实波形";
+			sourceTree = "<group>";
+		};
 		4F371E4A1F74E58D0013DAC8 /* BaseOnFrameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,9 +229,11 @@
 		4F85B6D61F7216C800C38ADD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4F0BA1E91F8CB42000D3DC52 /* 画真实波形 */,
 				4F401B601F7CE2F000B08AF1 /* 画假波形 */,
 				4F85B6D71F7218CC00C38ADD /* CYTestBotView.swift */,
 				4F85B6D91F721C9F00C38ADD /* CYTestPageView.swift */,
+				4F0BA1E71F8CA61400D3DC52 /* CYCycleProgressView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -348,6 +362,7 @@
 				4FA638A01F70AB1000838704 /* CYAddInfoFourthViewController.swift */,
 				4FA638A21F70AB2200838704 /* CYAddInfoFifthViewController.swift */,
 				4FA638A41F70AB3100838704 /* CYAddInfoSixthViewController.swift */,
+				4F8B28891F987B530028D6AB /* CYAddUpdateSubserHandler.swift */,
 			);
 			path = AdditionalMeterials;
 			sourceTree = "<group>";
@@ -357,6 +372,7 @@
 			children = (
 				4FA638A61F70B17C00838704 /* CYHistoryListViewController.swift */,
 				4FA638AD1F70BB9C00838704 /* CYHistoryViewController.swift */,
+				4FF820011F988D6D00278022 /* CYHistoryHandler.swift */,
 				4FA638A81F70B4D800838704 /* View */,
 			);
 			path = History;
@@ -367,6 +383,7 @@
 			children = (
 				4FEA92981F6F90B8007A4E19 /* CYLoginViewController.swift */,
 				4FEA929A1F6F90C2007A4E19 /* CYRegisterViewController.swift */,
+				4F8B28851F9844A70028D6AB /* CYLoginRegistHandler.swift */,
 			);
 			path = "Login&Regist";
 			sourceTree = "<group>";
@@ -376,6 +393,7 @@
 			children = (
 				4FEA92961F6F6804007A4E19 /* CYPersonnelListViewController.swift */,
 				4FEA92EF1F6FBFE1007A4E19 /* CYPersonnelListEditingViewController.swift */,
+				4F8B28871F9853690028D6AB /* CYPersonnelDataHandler.swift */,
 				4FEA92E11F6FAAEA007A4E19 /* View */,
 			);
 			path = Main;
@@ -392,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				4F9BFC501F720FCC00BCCCCB /* CYTestViewController.swift */,
+				4FF81FFF1F9889E400278022 /* CYUploadTestDataHandler.swift */,
 				4F85B6D61F7216C800C38ADD /* View */,
 			);
 			path = Test;
@@ -458,13 +477,13 @@
 			attributes = {
 				CLASSPREFIX = CY;
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "深圳前海全民健康科技股份有限公司";
 				TargetAttributes = {
 					4FEA92791F6F633D007A4E19 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 3E4YNVWNYC;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -514,15 +533,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FEA927E1F6F633D007A4E19 /* AppDelegate.swift in Sources */,
+				4FF820001F9889E400278022 /* CYUploadTestDataHandler.swift in Sources */,
 				4F7F297E1F7A561300EA67B6 /* CYRequestHandler.swift in Sources */,
 				4F7F297C1F7A543200EA67B6 /* CYNetworkingRequest.swift in Sources */,
+				4FF820021F988D6D00278022 /* CYHistoryHandler.swift in Sources */,
 				4FA638A11F70AB1000838704 /* CYAddInfoFourthViewController.swift in Sources */,
 				4F9A07911F735D65008ECCD2 /* CYDatabaseManager.swift in Sources */,
 				4FA638A31F70AB2200838704 /* CYAddInfoFifthViewController.swift in Sources */,
 				4FEA929B1F6F90C2007A4E19 /* CYRegisterViewController.swift in Sources */,
 				4F9BFC511F720FCC00BCCCCB /* CYTestViewController.swift in Sources */,
+				4F8B28861F9844A70028D6AB /* CYLoginRegistHandler.swift in Sources */,
+				4F8B28881F9853690028D6AB /* CYPersonnelDataHandler.swift in Sources */,
 				4FA638DE1F71031E00838704 /* CYHistoryCell.swift in Sources */,
 				4FEA92971F6F6804007A4E19 /* CYPersonnelListViewController.swift in Sources */,
+				4F0BA1E81F8CA61400D3DC52 /* CYCycleProgressView.swift in Sources */,
 				4F85B6DD1F724AF100C38ADD /* CYNavigationController.swift in Sources */,
 				4FEA92991F6F90B8007A4E19 /* CYLoginViewController.swift in Sources */,
 				4FA6389F1F70AB0800838704 /* CYAddInfoThirdViewController.swift in Sources */,
@@ -539,6 +563,7 @@
 				4FEA92FC1F6FC935007A4E19 /* CYAddInfoFirstViewController.swift in Sources */,
 				4FEA92F01F6FBFE1007A4E19 /* CYPersonnelListEditingViewController.swift in Sources */,
 				4FEA92E61F6FAB1E007A4E19 /* CYPersonCell.swift in Sources */,
+				4F0BA1EB1F8CB43B00D3DC52 /* CYWaveView.swift in Sources */,
 				4F85B6D81F7218CC00C38ADD /* CYTestBotView.swift in Sources */,
 				4FA638A51F70AB3100838704 /* CYAddInfoSixthViewController.swift in Sources */,
 				4F85B6DA1F721C9F00C38ADD /* CYTestPageView.swift in Sources */,
@@ -549,6 +574,7 @@
 				4FA638DB1F70F50B00838704 /* CYProgressView.swift in Sources */,
 				4F401B651F7CE2F000B08AF1 /* HeartRateWaveView.m in Sources */,
 				4F371E4C1F74E5AA0013DAC8 /* CYAlertView.swift in Sources */,
+				4F8B288A1F987B530028D6AB /* CYAddUpdateSubserHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,7 +610,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -592,7 +620,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -615,7 +647,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -635,7 +667,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -643,7 +677,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -660,7 +698,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -687,7 +725,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "QmjkInternational/Classes/Frameworks/QmjkInternational-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -709,7 +749,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.healthme.QmjkInternational;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "QmjkInternational/Classes/Frameworks/QmjkInternational-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;

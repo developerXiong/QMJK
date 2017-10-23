@@ -36,7 +36,7 @@ class CYLoginNavigationController: UINavigationController, UIGestureRecognizerDe
         return true
     }
     
-    func backAction() {
+    @objc func backAction() {
         self.popViewController(animated: true)
     }
     
@@ -71,7 +71,7 @@ class CYMainNavigationController: UINavigationController, UIGestureRecognizerDel
     /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        print_debug("hehe")
+        debugPrint("hehe")
     }
      */
     
@@ -84,7 +84,7 @@ class CYMainNavigationController: UINavigationController, UIGestureRecognizerDel
     }
     
    
-    func backAction() {
+    @objc func backAction() {
         if (self.childViewControllers.last?.isKind(of: CYHistoryListViewController.self))! {
             /// 历史记录界面直接跳转到首页
             self.popToRootViewController(animated: true)

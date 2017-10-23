@@ -13,7 +13,6 @@ class CYPersonnelListViewController: UITableViewController {
     typealias ReloadDataBlock = () -> ()
 
     var datas: [CYSubUserInfo]?
-    var db: CYDatabaseManager?
     
     var section: Int!
     
@@ -29,10 +28,10 @@ class CYPersonnelListViewController: UITableViewController {
     
     /// 获取数据
     func getData() {
-        db = CYDatabaseManager.shared
-        datas = [CYSubUserInfo]()
-        datas = db?.readAllData(userId: Int64(USERID)!)
-        tableView.reloadData()
+        CYPersonnelDataHandler.getSubUsers { (users) in
+            self.datas = users
+            self.tableView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +87,9 @@ class CYPersonnelListViewController: UITableViewController {
             cell?.setCell((datas?[indexPath.section])!)
             cell?.startBlock = { section in
                 /// 开始测量
-                self.performSegue(withIdentifier: "toTestSegue", sender: self)
+                if isCanTest {
+                    self.performSegue(withIdentifier: "toTestSegue", sender: self)
+                }
             }
             cell?.historyBlock = { section in
                 /// 历史记录
@@ -130,6 +131,7 @@ class CYPersonnelListViewController: UITableViewController {
         if segue.identifier == "toTestSegue" {
             let vc = segue.destination as! CYTestViewController
             vc.sid = self.datas![section].sid
+            vc.subUser = self.datas![section]
         }
     }
 

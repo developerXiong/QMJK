@@ -35,7 +35,7 @@ class CYHistoryCell: UITableViewCell {
     var row: Int?
     
     func setCellWithData(_ data: Dictionary<String, Any>, value: Int) {
-        let mainColor: String = data["mainColor"] as! String
+//        let mainColor: String = data["mainColor"] as! String
         let unit: String = data["unit"] as! String
         let title: String = data["title"] as! String
         let scaleValues: [Int] = data["allValues"] as! [Int]
@@ -62,6 +62,7 @@ class CYHistoryCell: UITableViewCell {
     /// 设置进度条相关
     private func setProgress(_ value: Int) {
         let baseLen: CGFloat = 60.0     // 进度条基本长度
+        let totalLen: CGFloat = screenW - 35 * 2  // 进度条总长度
         let scaleLen = screenW - 95.0*2
         var minValue: CGFloat = 0
         var maxValue: CGFloat = 0
@@ -129,7 +130,10 @@ class CYHistoryCell: UITableViewCell {
         marginValue = maxValue - minValue
         toMinValue = CGFloat(value) - minValue
         scale = CGFloat(toMinValue / marginValue)
-        let progressWidth = baseLen + scaleLen * scale
+        var progressWidth = baseLen + scaleLen * scale
+        if progressWidth >= totalLen {
+            progressWidth = totalLen
+        }
         progressWidthConstraint.constant = progressWidth
         
         /// 设置主题颜色
@@ -146,7 +150,7 @@ class CYHistoryCell: UITableViewCell {
         }
         
         /// 设置指标状态框的位置
-        stateBtnXConstraint.constant = 25 + 35 + progressWidth
+        stateBtnXConstraint.constant = progressWidth + 5
         
     }
     
