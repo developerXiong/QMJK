@@ -13,11 +13,9 @@ class CYUploadTestDataHandler: NSObject {
     /// 上传体检记录
     static func uploadTest(_ history: CYHistory, isSuccess: ((Bool, String)->())?) {
         self.uploadServerTest(history, isSuccess: { (isServerSuccess, errMsg) in
-            
             if isSuccess != nil {
                 isSuccess!(isServerSuccess, errMsg)
             }
-            
         })
     }
     

@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QmjkInternational/Classes/Login&amp;Regist/CYLoginViewController.swift"
-            timestampString = "530439547.682596"
+            filePath = "QmjkInternational/Classes/History/CYHistoryHandler.swift"
+            timestampString = "530519563.66721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "login(_:)"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "getServerHistory(_:isSuccess:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

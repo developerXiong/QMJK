@@ -16,6 +16,7 @@ class CYHistoryViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var tableView: UITableView!
     
     var userId: String?
+    var user: CYUser?
     
     var datas: NSArray?
     var history: CYHistory?
@@ -50,12 +51,10 @@ class CYHistoryViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     private func setTitleView() {
-        
-        
-//        nicknameLabel.text = userInfo.name
-//        sexLabel.text = userInfo.sex! ? "Male" : "Female"
-//        ageLabel.text = userInfo.realAge
-//        timeLabel.text = userInfo.creatTimeStr
+        nicknameLabel.text = user?.userName
+        sexLabel.text = user?.sex == "1" ? "Male" : "Female"
+        ageLabel.text = user?.age
+        timeLabel.text = user?.createTime
     }
     
     // MARK: - Table view data source

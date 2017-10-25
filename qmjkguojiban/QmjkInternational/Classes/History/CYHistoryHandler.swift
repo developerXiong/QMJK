@@ -38,7 +38,7 @@ class CYHistoryHandler: NSObject {
             
             if isServerSuccess {
                 var result: [CYHistory]? = nil
-                if let users = data!["history"] as? [[String : Any]] {
+                if let users = data!["result"] as? [[String : Any]] {
                     result = CYHistory.objectWithKeyValues(users) as? [CYHistory]
                 }
                 if isSuccess != nil {

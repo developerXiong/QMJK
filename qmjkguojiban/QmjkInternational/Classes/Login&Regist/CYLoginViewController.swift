@@ -116,18 +116,18 @@ class CYLoginViewController: UIViewController, UITextFieldDelegate {
         
         if datas == nil {
             datas = NSMutableArray()
-            datas?.insert(dict, at: 0)
         } else if (datas?.count)! > 2 {
             if !(datas?.contains(dict))! {
                 datas?.removeLastObject()
-                datas?.insert(dict, at: 0)
             }
+        } else {
         }
+        datas?.insert(dict, at: 0)
         datas?.write(toFile: loginInfoPath, atomically: true)
     }
     
 
-    /// 点击下拉
+    /// 点击下拉框的内容
     @IBAction func more(_ sender: Any) {
         if datas == nil {
             return
@@ -143,6 +143,9 @@ class CYLoginViewController: UIViewController, UITextFieldDelegate {
             self.dropdownView?.values = emails
             self.dropdownView?.selectRowAtIndex = { row in
                 debugPrint("点击第\(row)个")
+                let dict = self.datas![row] as? [String : Any]
+                self.emailTF.text = dict!["email"] as? String
+                self.passwordTF.text = dict!["password"] as? String
                 self.hiddenDropdownView()
             }
         }

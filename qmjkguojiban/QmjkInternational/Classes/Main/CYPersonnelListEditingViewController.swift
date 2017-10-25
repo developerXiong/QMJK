@@ -11,7 +11,7 @@ import UIKit
 class CYPersonnelListEditingViewController: UITableViewController {
 
     var datas: [CYUser]?
-    var userId: String!
+    var section: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +58,7 @@ class CYPersonnelListEditingViewController: UITableViewController {
         cell?.section = indexPath.section
         cell?.setCell((datas?[indexPath.section])!)
         cell?.editBlock = { section in
+            self.section = section
             /// 点击编辑
             self.performSegue(withIdentifier: "editToAddSegue", sender: self)
         }
@@ -65,11 +66,17 @@ class CYPersonnelListEditingViewController: UITableViewController {
         cell?.removeBlock = { section in
             /// 点击删除
             CYAlertView.showSystemAlert(on: self, title: "tips", message: "Delete?", sureHandler: { (_) in
+                CYPersonnelDataHandler.removeServerUser(self.datas![section].userId!, { (isSuccess) in
+                    if isSuccess {
+                        self.datas?.remove(at: section)
+                        self.tableView.reloadData()
+                    } else {
+                        CYAlertView.showText("Delete fail", on: self.view, duration: 0.3, position: .center)
+                    }
+                }, { (errMsg) in
+                    CYAlertView.showText("Delete fail", on: self.view, duration: 0.3, position: .center)
+                })
                 
-                
-                
-                self.datas?.remove(at: section)
-                self.tableView.reloadData()
             }, cancelHandler: nil)
         }
 
@@ -93,7 +100,7 @@ class CYPersonnelListEditingViewController: UITableViewController {
         if segue.identifier == "editToAddSegue" {
             let vc = segue.destination as! CYAddInfoFirstViewController
             vc.isEditInfo = true
-            vc.userId = userId
+            vc.userId = self.datas![section].userId
         }
     }
 

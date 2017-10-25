@@ -13,6 +13,7 @@ class CYHistoryListViewController: UITableViewController {
     var userId: String?
     var datas: [CYHistory]! = [CYHistory]()
     var row: Int!
+    var user: CYUser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +82,7 @@ class CYHistoryListViewController: UITableViewController {
             let vc = segue.destination as! CYHistoryViewController
             vc.history = self.datas?[row]
             vc.userId = userId
+            vc.user = user
         }
     }
 

@@ -73,4 +73,18 @@ class CYPersonnelDataHandler: NSObject {
         }
     }
     
+    
+    /// 删除服务器用户
+    static func removeServerUser(_ userId: String, _ success:((Bool)->())?, _ failure:((String)->())?) {
+        CYRequestHandler.removeUser(userId, success: { (isServerSuccess, data) in
+            if success != nil {
+                success!(isServerSuccess)
+            }
+        }) { (error) in
+            if failure != nil {
+                failure!(error)
+            }
+        }
+    }
+    
 }

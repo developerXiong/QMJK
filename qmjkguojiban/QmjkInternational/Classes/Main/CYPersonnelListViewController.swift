@@ -24,11 +24,11 @@ class CYPersonnelListViewController: UITableViewController {
         self.tableView.register(CYPersonCell.self, forCellReuseIdentifier: "PersonCell")
         self.tableView.register(CYAdditionButtonCell.self, forCellReuseIdentifier: "AddCell")
         
+        datas = [CYUser]()
     }
     
     /// 获取数据
     func getData() {
-        datas = [CYUser]()
         CYPersonnelDataHandler.getSubUsers { (users, errMsg) in
             guard let users = users else { return }
             self.datas = users
@@ -84,16 +84,17 @@ class CYPersonnelListViewController: UITableViewController {
         } else {
             /// 主要的cell
             let cell = Bundle.main.loadNibNamed("CYPersonCell", owner: nil, options: nil)?.last as? CYPersonCell
-            self.section = indexPath.section
             cell?.section = indexPath.section
             cell?.setCell((datas?[indexPath.section])!)
             cell?.startBlock = { section in
+                self.section = indexPath.section
                 /// 开始测量
                 if isCanTest {
                     self.performSegue(withIdentifier: "toTestSegue", sender: self)
                 }
             }
             cell?.historyBlock = { section in
+                self.section = indexPath.section
                 /// 历史记录
                 self.performSegue(withIdentifier: "historySegue", sender: self)
             }
@@ -123,11 +124,11 @@ class CYPersonnelListViewController: UITableViewController {
         if segue.identifier == "toDetailSegue" {
             let vc = segue.destination as! CYPersonnelListEditingViewController
             vc.datas = self.datas
-            vc.userId = self.datas![section].userId
         }
         if segue.identifier == "historySegue" {
             let vc = segue.destination as! CYHistoryListViewController
             vc.userId = self.datas![section].userId
+            vc.user = self.datas![section]
         }
         if segue.identifier == "toTestSegue" {
             let vc = segue.destination as! CYTestViewController

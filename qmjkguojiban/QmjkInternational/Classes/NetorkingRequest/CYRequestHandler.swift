@@ -176,5 +176,21 @@ class CYRequestHandler: NSObject {
         }
     }
     
+    /// 删除单个用户 
+    static func removeUser(_ userId: String, success: RequestSuccessBlock?, failure: RequestFailureBlock?) {
+        let params = ["userId" : userId]
+        let url = "deleteUserInfo"
+        CYNetworkingRequest.post(url, params, { (data) in
+            if success != nil {
+                let isSuccess = true
+                success!(isSuccess, data)
+            }
+        }) { (error) in
+            if failure != nil {
+                failure!(error)
+            }
+        }
+    }
+    
     
 }
